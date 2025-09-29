@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Diálogo Intercultural - Función Judicial Ecuador</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f2557 0%, #1e3c72 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 24px;
+        }
+
+        .title-section h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-section h2 {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .resolution-info {
+            text-align: right;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #2a5298;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .card-content {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #2a5298;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .timeline-title {
+            font-size: 24px;
+            color: #1e3c72;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: #2a5298;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #2a5298;
+        }
+
+        .timeline-step {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .principle-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .principle-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .principle-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .navigation-tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px 20px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .nav-tab.active {
+            background: #2a5298;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(42, 82, 152, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+        }
+
+        .alert-box {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(116, 185, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-section {
+                margin-bottom: 20px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navigation-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">⚖️</div>
+                <div class="title-section">
+                    <h1>CONSEJO DE LA JUDICATURA</h1>
+                    <h2>República del Ecuador</h2>
+                </div>
+            </div>
+            <div class="resolution-info">
+                <div><strong>RESOLUCIÓN 053-2023</strong></div>
+                <div>28 de marzo de 2023</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Instrumentos Principales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Principios de Justicia Intercultural</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Pueblos Indígenas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">14</div>
+                <div class="stat-label">Nacionalidades Indígenas</div>
+            </div>
+        </div>
+
+        <div class="navigation-tabs">
+            <div class="nav-tab active" onclick="showTab('overview')">Resumen Ejecutivo</div>
+            <div class="nav-tab" onclick="showTab('protocol')">Protocolo</div>
+            <div class="nav-tab" onclick="showTab('mechanisms')">Mecanismos</div>
+            <div class="nav-tab" onclick="showTab('implementation')">Implementación</div>
+        </div>
+
+        <div id="overview" class="tab-content active">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">Objetivo Principal</div>
+                    </div>
+                    <div class="card-content">
+                        Establecer lineamientos para la aplicación del diálogo intercultural en la Función Judicial y crear mecanismos de coordinación y cooperación entre la justicia indígena y justicia ordinaria.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👥</div>
+                        <div class="card-title">Destinatarios</div>
+                    </div>
+                    <div class="card-content">
+                        Jueces, fiscales, defensores públicos, autoridades indígenas y personal de la Función Judicial que actúe en procesos donde intervengan miembros de pueblos y nacionalidades indígenas.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">⚖️</div>
+                        <div class="card-title">Marco Legal</div>
+                    </div>
+                    <div class="card-content">
+                        Basado en el Art. 171 de la Constitución, Convenio 169 OIT, Declaraciones internacionales de derechos indígenas y Sentencia No. 112-14-JH/21 de la Corte Constitucional.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🌍</div>
+                        <div class="card-title">Alcance</div>
+                    </div>
+                    <div class="card-content">
+                        Aplicación nacional en actuaciones pre-procesales, procesales penales y procedimientos de garantías jurisdiccionales con enfoque intercultural.
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <h3>🎯 Cumplimiento de Sentencia Constitucional</h3>
+                <p>Este protocolo da cumplimiento a la Sentencia vinculante No. 112-14-JH/21 de la Corte Constitucional del Ecuador, estableciendo la obligatoriedad del diálogo intercultural en procesos judiciales.</p>
+            </div>
+        </div>
+
+        <div id="protocol" class="tab-content">
+            <div class="timeline">
+                <div class="timeline-title">🗣️ Protocolo de Diálogo Intercultural</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Interpretación Intercultural</div>
+                        <p>Obligación de realizar una nueva lectura de situaciones nacionales con enfoque en diversidad cultural, especialmente con pueblos indígenas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Diálogo Directo</div>
+                        <p>Comunicación directa entre operadores de justicia y autoridades indígenas para comprensión mutua de sistemas de justicia.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Características del Diálogo</div>
+                        <p>Debe ser de doble vía, respetuoso de autonomía indígena, sensible a diferencias culturales y contribuir a coordinación entre sistemas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Facilitadores</div>
+                        <p>Posibilidad de contar con facilitadores interculturales con conocimiento en pluralismo jurídico y derechos colectivos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">⚖️</div>
+                    <div class="principle-title">Diversidad</div>
+                    <div class="principle-desc">Reconocimiento del derecho propio, costumbres y prácticas ancestrales</div>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🤝</div>
+                    <div class="principle-title">Igualdad</div>
+                    <div class="principle-desc">Garantía de comprensión de normas y procedimientos con traductores y peritos</div>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🛡️</div>
+                    <div class="principle-title">Non bis in ídem</div>
+                    <div class="principle-desc">Lo resuelto por justicia indígena no puede ser juzgado nuevamente</div>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-icon">🏛️</div>
+                    <div class="principle-title">Pro jurisdicción indígena</div>
+                    <div class="principle-desc">En caso de duda, se prefiere la jurisdicción indígena</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="mechanisms" class="tab-content">
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🔄</div>
+                        <div class="card-title">Mecanismos de Cooperación</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>1. Declinación de competencia:</strong> Proceso para remitir casos a jurisdicción indígena<br><br>
+                        <strong>2. Cooperación institucional:</strong> Apoyo entre fiscalía, policía y autoridades indígenas<br><br>
+                        <strong>3. Cumplimiento de decisiones:</strong> Respeto y ejecución de resoluciones indígenas
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🤝</div>
+                        <div class="card-title">Mecanismos de Coordinación</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>1. Comunicación permanente:</strong> Entre actores de ambas justicias<br><br>
+                        <strong>2. Visitas in situ:</strong> Operadores de justicia en territorios indígenas<br><br>
+                        <strong>3. Peritajes especializados:</strong> Antropológicos, sociológicos e interculturales
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👩‍⚖️</div>
+                        <div class="card-title">Casos Especiales</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Violencia contra mujeres:</strong> Coordinación especial garantizando participación de consejos de mujeres<br><br>
+                        <strong>Pueblos de reciente contacto:</strong> Medidas reforzadas de protección y diálogo<br><br>
+                        <strong>Menores de edad:</strong> Enfoque de prioridad absoluta e interés superior
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📋</div>
+                        <div class="card-title">Hábeas Corpus Intercultural</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Procedimiento especial:</strong> Para personas indígenas privadas de libertad<br><br>
+                        <strong>Medidas alternativas:</strong> Preferencia por sanciones distintas al encarcelamiento<br><br>
+                        <strong>Diálogo obligatorio:</strong> Con autoridades indígenas antes de prisión preventiva
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🚨 Deber Reforzado de Excepcionalidad</h3>
+                <p><strong>Para pueblos de reciente contacto:</strong> El juez no podrá dictar prisión preventiva sin: (1) Diálogo intercultural con autoridades indígenas, (2) Análisis de medidas alternativas, (3) Carga argumentativa mayor para justificar la privación de libertad.</p>
+            </div>
+        </div>
+
+        <div id="implementation" class="tab-content">
+            <div class="timeline">
+                <div class="timeline-title">📅 Cronograma de Implementación</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">30</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">30 días - Parámetros Técnicos</div>
+                        <p>Dirección Nacional remite lineamientos para levantamiento de información sobre aplicación de diálogo intercultural.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">12</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">12 meses - Sistema Digital</div>
+                        <p>Desarrollo e implementación de registro digital para procesamiento de información sobre diálogo intercultural.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">∞</div>
+                    <div class="timeline-content">
+                        <div class="timeline-step">Seguimiento Permanente</div>
+                        <p>Monitoreo continuo por Consejo de la Judicatura y Defensoría del Pueblo de la aplicación del protocolo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">Seguimiento CJ</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Reporte trimestral:</strong> Direcciones Provinciales informan aplicación del diálogo<br><br>
+                        <strong>Sistema automático:</strong> Registro digital de casos con enfoque intercultural<br><br>
+                        <strong>Incumplimientos:</strong> Comunicación a Corte Constitucional para revisión
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">👁️</div>
+                        <div class="card-title">Vigilancia DPE</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Monitoreo del debido proceso:</strong> Con perspectiva intercultural<br><br>
+                        <strong>Verificación de derechos:</strong> Ausencia de discriminación y presencia de intérpretes<br><br>
+                        <strong>Alertas institucionales:</strong> Sobre presuntas faltas disciplinarias
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">📞</div>
+                        <div class="card-title">Base de Autoridades</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Registro oficial:</strong> Autoridades indígenas legitimadas por derecho propio<br><br>
+                        <strong>Facilitar contacto:</strong> Para operadores de justicia en diálogo intercultural<br><br>
+                        <strong>Actualización constante:</strong> Según cambios en organizaciones indígenas
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">🎓</div>
+                        <div class="card-title">Capacitación</div>
+                    </div>
+                    <div class="card-content">
+                        <strong>Formación continua:</strong> Para operadores de justicia en interculturalidad<br><br>
+                        <strong>Conocimiento cultural:</strong> Idiomas, costumbres y procedimientos indígenas<br><br>
+                        <strong>Espacios de reflexión:</strong> Diálogo permanente entre jurisdicciones
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                <h3>⚡ Entrada en Vigencia</h3>
+                <p>La resolución entra en vigencia a partir de su aprobación el 28 de marzo de 2023, sin perjuicio de su publicación en el Registro Oficial.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Consejo de la Judicatura del Ecuador | Resolución 053-2023 | Protocolo de Diálogo Intercultural</p>
+        <p>Construido con la participación de pueblos y nacionalidades indígenas del Ecuador</p>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Ocultar todos los contenidos
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remover clase active de todas las pestañas
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Mostrar contenido seleccionado
+            document.getElementById(tabName).classList.add('active');
+
+            // Agregar clase active a la pestaña seleccionada
+            event.target.classList.add('active');
+        }
+
+        // Animaciones al cargar
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.card, .stat-card, .principle-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
